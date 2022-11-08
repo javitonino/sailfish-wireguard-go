@@ -1,9 +1,13 @@
 Name:       wireguard-go
 Summary:    Userspace implementation of WireGuard in Go
 Version:    0.0.20220316
-Release:    1
+Release:    2
 License:    MIT
 URL:        https://www.wireguard.com
+
+# The go binary requires GLIBC_2.0 which is not probided by glibc on armv7hl (only 2.4 onwards)
+# Since the requirement is an old libc anyway, we can just ignore it
+%global __requires_exclude GLIBC
 
 %description
 

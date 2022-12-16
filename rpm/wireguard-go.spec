@@ -1,7 +1,7 @@
 Name:       wireguard-go
 Summary:    Userspace implementation of WireGuard in Go
 Version:    0.0.20220316
-Release:    2
+Release:    3
 License:    MIT
 URL:        https://www.wireguard.com
 
@@ -19,7 +19,7 @@ fi
 
 case %{_arch} in
     "aarch64") export GOARCH=arm64;;
-    "armv7hl") export GOARCH=arm;;
+    "arm") export GOARCH=arm;;
     "i386") export GOARCH=386; export GOROOT=~/go; export GOPATH=~/go;;
 esac
 ~/go/bin/go install golang.zx2c4.com/wireguard@%{version}
@@ -27,7 +27,7 @@ esac
 %install
 case %{_arch} in
     "aarch64") export ARCH_PREFIX="linux_arm64/";;
-    "armv7hl") export ARCH_PREFIX="linux_arm/";;
+    "arm") export ARCH_PREFIX="linux_arm/";;
     "i486") export ARCH_PREFIX="";;
 esac
 install -d %{buildroot}%{_bindir}
